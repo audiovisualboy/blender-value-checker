@@ -1,10 +1,10 @@
 bl_info = {
     "name": "Value Checker",
     "author": "Toto (with Claude)",
-    "version": (1, 2, 4),
+    "version": (1, 2, 5),
     "blender": (5, 0, 0),
     "location": "View3D > Sidebar > Value Check",
-    "description": "Instant grayscale value check via hotkeys using the Viewport Compositor. Inspired by Photoshop and Rebelle's value check tools.",
+    "description": "Instant grayscale value checking via hotkey using the Viewport Compositor. Inspired by custom value checking workflows in Photoshop and Rebelle.",
     "category": "3D View",
     "doc_url": "https://github.com/audiovisualboy/blender-value-checker",
     "tracker_url": "https://github.com/audiovisualboy/blender-value-checker/issues",
@@ -158,6 +158,7 @@ class ValueCheckPreferences(AddonPreferences):
         col.prop(self, "key_toggle_bw")
         col.prop(self, "key_toggle_blur")
         col.prop(self, "key_toggle_posterize")
+        box.label(text="For custom combos, search 'Value Check' in Preferences > Keymap.", icon='INFO')
         layout.separator()
         layout.operator("view3d.value_check_setup_nodes", text="Re-run Node Setup for Current Scene", icon='FILE_REFRESH')
         layout.label(text="Tip: Run 'Re-run Node Setup' whenever you start a new scene.", icon='INFO')
