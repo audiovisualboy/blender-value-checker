@@ -1,6 +1,6 @@
 # 🎨 Blender Value Checker
 
-I'm a artist who works both digitally and traditionally and I use Blender to create my own reference images to paint from for some of my pieces.
+I'm an artist who works both digitally and traditionally and I use Blender to create my own reference images to paint from for some of my pieces.
 
 Values are important in how an image reads. In my workflow no matter what the context, whether it's my reference image or the painting itself, I want to reduce it to grayscale and check the values and see how the image reads. Typically I've done this in Photoshop with some custom layer groups triggered by an action, or in Rebelle it's somewhat built in, at least partly as a quick grayscale toggle.
 
