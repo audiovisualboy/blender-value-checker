@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Value Checker",
     "author": "Toto (with Claude)",
-    "version": (1, 2, 5),
+    "version": (1, 2, 7),
     "blender": (5, 0, 0),
     "location": "View3D > Sidebar > Value Check",
     "description": "Instant grayscale value checking via hotkey using the Viewport Compositor. Inspired by custom value checking workflows in Photoshop and Rebelle.",
@@ -483,7 +483,7 @@ class VIEW3D_PT_value_check(Panel):
     bl_idname = "VIEW3D_PT_value_check"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = "Value Check"
+    bl_category = "Value Checker"
 
     def draw(self, context):
         layout = self.layout
@@ -599,7 +599,10 @@ def register_keymaps():
 
 def unregister_keymaps():
     for km, kmi in addon_keymaps:
-        km.keymap_items.remove(kmi)
+        try:
+            km.keymap_items.remove(kmi)
+        except Exception as e:
+            print(f"[Value Checker] Warning: could not remove keymap item: {e}")
     addon_keymaps.clear()
 
 
