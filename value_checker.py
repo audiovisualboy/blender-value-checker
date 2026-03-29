@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Value Checker",
     "author": "Toto (with Claude)",
-    "version": (1, 2, 7),
+    "version": (1, 2, 8),
     "blender": (5, 0, 0),
     "location": "View3D > Sidebar > Value Check",
     "description": "Instant grayscale value checking via hotkey using the Viewport Compositor. Inspired by custom value checking workflows in Photoshop and Rebelle.",
@@ -502,6 +502,16 @@ class VIEW3D_PT_value_check(Panel):
         bw_on   = is_bw_active(context)
         blur_on = is_blur_active(context)
         post_on = is_posterize_active(context)
+
+        # ── Auto-sync: if value check is ON but this viewport is DISABLED, restore last mode ──
+        if bw_on and current_mode == 'DISABLED':
+            last_mode = context.scene.get('value_check_last_mode', 'CAMERA')
+            for area in context.screen.areas:
+                if area.type == 'VIEW_3D':
+                    for space in area.spaces:
+                        if space.type == 'VIEW_3D':
+                            if space.shading.use_compositor == 'DISABLED':
+                                space.shading.use_compositor = last_mode
 
         # ── Main toggles ──
         col = layout.column(align=True)
